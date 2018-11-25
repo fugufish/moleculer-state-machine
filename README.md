@@ -1,5 +1,8 @@
 ![Moleculer logo](https://raw.githubusercontent.com/ice-services/moleculer/HEAD/docs/assets/logo.png)
 # Moleculer State Machine
+
+[![Build Status](https://travis-ci.org/fugufish/moleculer-state-machine.svg?branch=master)](https://travis-ci.org/fugufish/moleculer-state-machine)
+
 Moleculer State Machine is an add on for the [Moleculer](https://moleculer.services/)
 microservices framework that allows services to be extended with 
 [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine) behavior.
@@ -33,7 +36,7 @@ const StateMAchine = require("moleculer-state-machine");
  The mixin delegates the methods `is`, `can`, `cannot`, `transitions`, 
  `allTransitions`, `allStates`, and the `state` property to an internal instance of
  `javascript-state-machine` that is created on service creation.
- 
+
  ## Events
 The mixin emits all `javascript-stage-machine` events as service events prefixed by 
 the service name. The `onBeforeTransition` event for example will emit on the broker
