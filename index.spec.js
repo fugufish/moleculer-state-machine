@@ -69,6 +69,12 @@ describe("StateMachine", () => {
         it("delegates 'allStates'", () => {
             expect(service.allStates()).to.deep.eq(service.stateMachine.allStates());
         });
+
+        it("delegates 'next'", () => {
+            const spy = sinon.spy(service.stateMachine, "next");
+            service.next();
+            expect(spy).to.have.been.called;
+        });
     });
 
     describe("events", () => {

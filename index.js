@@ -52,6 +52,8 @@ module.exports = {
         });
 
         this.stateMachine.transitions().forEach((t) => {
+            delegates(this, "stateMachine")
+                .method(t);
             this.stateMachine.observe(`onBefore${lodash.capitalize(t)}`, ({
                 transition, event, from, to,
             }) => {
