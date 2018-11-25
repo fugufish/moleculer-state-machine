@@ -20,6 +20,11 @@ module.exports = {
         this.stateMachine.observe("onBeforeTransition", ({
             transition, event, from, to,
         }) => {
+            if (this.onBeforeTransition) {
+                this.onBeforeTransition({
+                    transition, event, from, to,
+                });
+            }
             this.broker.emit(`${this.name}.onBeforeTransition`, {
                 transition, event, from, to,
             });
@@ -28,20 +33,51 @@ module.exports = {
         this.stateMachine.observe("onAfterTransition", ({
             transition, event, from, to,
         }) => {
+            if (this.onAfterTransition) {
+                this.onAfterTransition({
+                    transition, event, from, to,
+                });
+            }
             this.broker.emit(`${this.name}.onAfterTransition`, {
                 transition, event, from, to,
             });
         });
 
-        this.stateMachine.allStates().forEach((t) => {
-            if (this[`onEnter${lodash.capitalize(t)}`]) {
-                this[`onEnter${lodash.capitalize(t)}`]({
+        this.stateMachine.observe("onEnterState", ({
+            transition, event, from, to,
+        }) => {
+            if (this.onEnterState) {
+                this.onEnterState({
                     transition, event, from, to,
                 });
             }
+            this.broker.emit(`${this.name}.onEnterState`, {
+                transition, event, from, to,
+            });
+        });
+
+        this.stateMachine.observe("onLeaveState", ({
+            transition, event, from, to,
+        }) => {
+            if (this.onLeaveState) {
+                this.onLeaveState({
+                    transition, event, from, to,
+                });
+            }
+            this.broker.emit(`${this.name}.onLeaveState`, {
+                transition, event, from, to,
+            });
+        });
+
+        this.stateMachine.allStates().forEach((t) => {
             this.stateMachine.observe(`onEnter${lodash.capitalize(t)}`, ({
                 transition, event, from, to,
             }) => {
+                if (this[`onEnter${lodash.capitalize(t)}`]) {
+                    this[`onEnter${lodash.capitalize(t)}`]({
+                        transition, event, from, to,
+                    });
+                }
                 this.broker.emit(`${this.name}.onEnter${lodash.capitalize(t)}`, {
                     transition, event, from, to,
                 });

@@ -24,6 +24,32 @@ const TestService = {
             { name: "next", from: "new", to: "nexted" },
         ],
     },
+    methods: {
+        onBeforeTransition() {
+            return true;
+        },
+        onAfterTransition() {
+            return true;
+        },
+        onEnterState() {
+            return true;
+        },
+        onLeaveState() {
+            return true;
+        },
+        onBeforeNext() {
+            return true;
+        },
+        onAfterNext() {
+            return true;
+        },
+        onEnterNexted() {
+            return true;
+        },
+        onLeaveNew() {
+            return true;
+        },
+    },
 };
 
 describe("StateMachine", () => {
@@ -102,6 +128,20 @@ describe("StateMachine", () => {
             }));
         });
 
+        it("emits 'test.onEnterState'", () => {
+            service.stateMachine.next();
+            expect(emitStub).to.have.been.calledWith(sinon.match("test.onEnterState", {
+                event: "onEnterState", transition: "next", from: "new", to: "nexted",
+            }));
+        });
+
+        it("emits 'test.onLeaveState'", () => {
+            service.stateMachine.next();
+            expect(emitStub).to.have.been.calledWith(sinon.match("test.onLeaveState", {
+                event: "onLeaveState", transition: "next", from: "new", to: "nexted",
+            }));
+        });
+
         it("emits 'test.onLeaveNew'", () => {
             service.stateMachine.next();
             expect(emitStub).to.have.been.calledWith(sinon.match("test.onLeaveNew", {
@@ -113,6 +153,40 @@ describe("StateMachine", () => {
             service.stateMachine.next();
             expect(emitStub).to.have.been.calledWith(sinon.match("test.onLeaveNew", {
                 event: "onEnterNexted", transition: "next", from: "new", to: "nexted",
+            }));
+        });
+    });
+
+    describe("callbacks", () => {
+        it("calls 'onBeforeTransition'", () => {
+            const spy = sinon.spy(service, "onBeforeTransition");
+            service.stateMachine.next();
+            expect(spy).to.have.been.calledWith(sinon.match({
+                event: "onBeforeTransition", transition: "next", from: "new", to: "nexted",
+            }));
+        });
+
+        it("calls 'onAfterTransition'", () => {
+            const spy = sinon.spy(service, "onAfterTransition");
+            service.stateMachine.next();
+            expect(spy).to.have.been.calledWith(sinon.match({
+                event: "onAfterTransition", transition: "next", from: "new", to: "nexted",
+            }));
+        });
+
+        it("calls 'onEnterState'", () => {
+            const spy = sinon.spy(service, "onEnterState");
+            service.stateMachine.next();
+            expect(spy).to.have.been.calledWith(sinon.match({
+                event: "onEnterState", transition: "next", from: "new", to: "nexted",
+            }));
+        });
+
+        it("calls 'onLeaveState'", () => {
+            const spy = sinon.spy(service, "onLeaveState");
+            service.stateMachine.next();
+            expect(spy).to.have.been.calledWith(sinon.match({
+                event: "onLeaveState", transition: "next", from: "new", to: "nexted",
             }));
         });
     });
