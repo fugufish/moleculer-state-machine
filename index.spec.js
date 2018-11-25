@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-expressions */
-const { expect, ...chai } = require("chai");
+const chai = require("chai");
 const sinon = require("sinon");
 const sinonChai = require("sinon-chai");
 const { ServiceBroker } = require("moleculer");
+
+const expect = chai.expect;
 
 chai.use(sinonChai);
 
