@@ -1,0 +1,23 @@
+{
+    "root": true,
+    "extends": "airbnb-base",
+    "parser": "babel-eslint",
+    "plugins": [
+        "flowtype"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 2017
+    },
+    "env": {
+        "es6": true,
+        "node": true,
+        "mocha": true
+    },
+    "rules": {
+        "quotes": ["error", "double"],
+        "indent": ["error", 4],
+        "max-len": ["warn", 120],
+        "no-underscore-dangle": "off",
+        "import/prefer-default-export": "off"
+    }
+}
