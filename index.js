@@ -34,6 +34,11 @@ module.exports = {
         });
 
         this.stateMachine.allStates().forEach((t) => {
+            if (this[`onEnter${lodash.capitalize(t)}`]) {
+                this[`onEnter${lodash.capitalize(t)}`]({
+                    transition, event, from, to,
+                });
+            }
             this.stateMachine.observe(`onEnter${lodash.capitalize(t)}`, ({
                 transition, event, from, to,
             }) => {
@@ -45,6 +50,11 @@ module.exports = {
             this.stateMachine.observe(`onLeave${lodash.capitalize(t)}`, ({
                 transition, event, from, to,
             }) => {
+                if (this[`onLeave${lodash.capitalize(t)}`]) {
+                    this[`onLeave${lodash.capitalize(t)}`]({
+                        transition, event, from, to,
+                    });
+                }
                 this.broker.emit(`${this.name}.onLeave${lodash.capitalize(t)}`, {
                     transition, event, from, to,
                 });
@@ -57,6 +67,11 @@ module.exports = {
             this.stateMachine.observe(`onBefore${lodash.capitalize(t)}`, ({
                 transition, event, from, to,
             }) => {
+                if (this[`onBefore${lodash.capitalize(t)}`]) {
+                    this[`onBefore${lodash.capitalize(t)}`]({
+                        transition, event, from, to,
+                    });
+                }
                 this.broker.emit(`${this.name}.onBefore${lodash.capitalize(t)}`, {
                     transition, event, from, to,
                 });
@@ -65,6 +80,11 @@ module.exports = {
             this.stateMachine.observe(`onAfter${lodash.capitalize(t)}`, ({
                 transition, event, from, to,
             }) => {
+                if (this[`onAfter${lodash.capitalize(t)}`]) {
+                    this[`onAfter${lodash.capitalize(t)}`]({
+                        transition, event, from, to,
+                    });
+                }
                 this.broker.emit(`${this.name}.onAfter${lodash.capitalize(t)}`, {
                     transition, event, from, to,
                 });

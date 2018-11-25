@@ -53,6 +53,16 @@ the service name. The `onBeforeTransition` event for example will emit on the br
 See [javascript-state-machine lifecylce events](https://github.com/jakesgordon/javascript-state-machine/blob/master/docs/lifecycle-events.md)
 for more details.
 
+## Callbacks
+Methods can be defined on the service that will be called when a specific state
+machine event occurs. These callbacks are called with the same arguments as 
+as events.
+
+See [javascript-state-machine lifecylce events](https://github.com/jakesgordon/javascript-state-machine/blob/master/docs/lifecycle-events.md)
+for more details.
+
+
+
 ## License
 Moleculer State Machine is available under the MIT license](https://tldrlegal.com/license/mit-license).
 
