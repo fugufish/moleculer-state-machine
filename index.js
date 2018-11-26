@@ -97,7 +97,7 @@ module.exports = {
             });
         });
 
-        this.stateMachine.transitions().forEach((t) => {
+        this.stateMachine.allTransitions().forEach((t) => {
             delegates(this, "stateMachine")
                 .method(t);
             this.stateMachine.observe(`onBefore${lodash.capitalize(t)}`, ({
