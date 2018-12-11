@@ -3,6 +3,7 @@ const delegates = require("delegates");
 const lodash = require("lodash");
 
 module.exports = {
+    name: "molecluer-state-machine",
     created() {
         this.stateMachine = StateMachine({
             init: this.settings.initialState,
