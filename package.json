@@ -1,6 +1,6 @@
 {
   "name": "moleculer-state-machine",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "State Machine mixin that extends a Moleculer Service to act as a finite-state machine.",
   "main": "index.js",
   "repository": "https://github.com/fugufish/moleculer-state-machine.git",
@@ -18,6 +18,7 @@
     "sinon": "^7.1.1",
     "sinon-chai": "^3.2.0"
   },
+  "typings": "./index.d.ts",
   "dependencies": {
     "delegates": "^1.0.0",
     "javascript-state-machine": "^3.1.0",
