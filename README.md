@@ -1,7 +1,7 @@
 ![Moleculer logo](https://raw.githubusercontent.com/ice-services/moleculer/HEAD/docs/assets/logo.png)
 # Moleculer State Machine
 
-[![Build Status](https://travis-ci.org/fugufish/moleculer-state-machine.svg?branch=master)](https://travis-ci.org/fugufish/moleculer-state-machine)
+[![Tests](https://github.com/fugufish/moleculer-state-machine/actions/workflows/node.js.yml/badge.svg)](https://github.com/fugufish/moleculer-state-machine/actions/workflows/node.js.yml)
 
 Moleculer State Machine is an add on for the [Moleculer](https://moleculer.services/)
 microservices framework that allows services to be extended with 
