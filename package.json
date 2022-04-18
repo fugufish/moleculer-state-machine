@@ -7,19 +7,16 @@
   "author": "fugufish",
   "license": "MIT",
   "devDependencies": {
-    "chai": "^4.2.0",
-    "mocha": "^5.2.0",
-    "sinon": "^7.1.1",
-    "sinon-chai": "^3.2.0"
+    "jest": "^27.5.1"
   },
   "typings": "./index.d.ts",
   "dependencies": {
     "delegates": "^1.0.0",
     "javascript-state-machine": "^3.1.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.0",
     "moleculer": "^0.14.0"
   },
   "scripts": {
-    "test": "mocha ./index.spec.js"
+    "test": "jest ./index.test.js"
   }
 }
