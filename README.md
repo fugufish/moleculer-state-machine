@@ -14,7 +14,7 @@ Moleculer State Machine will look in the service `settings` for the state machin
 options:
 
 ```javascript
-const StateMAchine = require("moleculer-state-machine");
+const StateMachine = require("moleculer-state-machine");
 
 {
     name: "service-with-state-machine",
