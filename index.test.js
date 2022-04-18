@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-expressions */
 const { ServiceBroker } = require("moleculer");
 
 const StateMachine = require("./");
